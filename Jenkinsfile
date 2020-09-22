@@ -5,7 +5,7 @@ pipeline {
     agent any
 
     stages {
-    // implicit checkout stage
+        // implicit checkout stage
 
         stage('Build') {
             steps {
@@ -13,7 +13,7 @@ pipeline {
             }
         }
     }
-    // post at end of stage becomes an implicit stage as well
+    // post after stages, for entire pipeline, is also an implicit step albeit with explicit config here, unlike implicit checkout stage
     post {
         always {
             junit '**/target/surefire-reports/TEST-*.xml'
