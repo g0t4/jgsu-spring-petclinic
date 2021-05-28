@@ -3,13 +3,15 @@ pipeline {
     triggers { pollSCM('* * * * *') }
     stages {
         stage('Checkout'){
-            parallel masterBranch: {
+            steps {
+                parallel masterBranch: {
                 git url: 'https://github.com/johannesanchez/jgsu-spring-petclinic', branch: 'main'
-            }, devBranch: {
+                }, devBranch: {
                 git url: 'https://github.com/johannesanchez/jgsu-spring-petclinic', branch: 'dev'
-            },
-            failFast: true //|false
-        }
+                },
+                failFast: true //|false
+                }
+            }
 
         // stage('Checkout'){
         //     steps {
