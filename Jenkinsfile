@@ -12,7 +12,7 @@ pipeline {
                 failFast: true //|false
                 }
             }
-
+        //Added this lines to create dev branch on remote
         // stage('Checkout'){
         //     steps {
         //         git url: 'https://github.com/johannesanchez/jgsu-spring-petclinic', branch: 'main'
