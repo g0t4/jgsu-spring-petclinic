@@ -12,8 +12,9 @@ pipeline {
 //             }
 //         }
         stage('Build') {
-            environment {
-                LOG_LEVEL=''INFO
+            input {
+                message 'Build Now?'
+                ok 'Approve'
             }
             steps {
                 // Run Maven on a Unix agent.
