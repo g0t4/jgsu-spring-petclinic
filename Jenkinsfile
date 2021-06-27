@@ -12,6 +12,9 @@ pipeline {
 //             }
 //         }
         stage('Build') {
+            environment {
+                LOG_LEVEL=''INFO
+            }
             steps {
                 // Run Maven on a Unix agent.
                 sh "./mvnw clean package"
