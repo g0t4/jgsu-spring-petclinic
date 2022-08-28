@@ -1,3 +1,18 @@
 {
-    "java.configuration.updateBuildConfiguration": "interactive"
+  "java.configuration.updateBuildConfiguration": "interactive",
+  "jenkins-runner.jobs": {
+    "ide": {
+      "runWith": "pipeline-8080",
+      "name": "pipeline-ide",
+      "isDefault": true
+    }
+  },
+  "jenkins-runner.hostConfigs": {
+    "pipeline-8080": {
+      "url": "http://localhost:8080",
+      "user": "Rey Cerio",
+      "password": "Mei and Caden is my family",
+      "useCrumbIssuer": true
+    }
+  }
 }
