@@ -1,0 +1,36 @@
+name: Integration Suite
+
+on: ['push']
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.ref != 'refs/heads/master' }}
+
+jobs:
+  start:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    name: Start the application
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '16'
+          cache: 'maven'
+
+      - name: Start the application
+        run: java -jar -Dserver.port=8081 target/spring-petclinic-2.3.1.BUILD-SNAPSHOT.jar
+
+      - name: Validate the application
+        run: .mvnw/ validate
+      
+      - name: Compile the application
+        run: .mvnw/ compile
+
+      - name: Test the application
+        run: .mvnw/ test
+
+      - name: Package the application
+        run: .mvnw/ package
