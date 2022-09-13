@@ -20,8 +20,8 @@ jobs:
           java-version: '16'
           cache: 'maven'
 
-      - name: Start the application
-        run: java -jar -Dserver.port=8081 target/spring-petclinic-2.3.1.BUILD-SNAPSHOT.jar
+      # - name: Start the application
+      #   run: java -jar -Dserver.port=8081 target/spring-petclinic-2.3.1.BUILD-SNAPSHOT.jar
 
       - name: Validate the application
         run: .mvnw/ validate
